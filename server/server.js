@@ -21,19 +21,11 @@ app.use(express.static(publicPath));
 // ========================================
 // Configuracion de Sockets
 // Esta es la comunicacion del backend
-let io = socketIO(server);
-io.on("connection", client => {
-  console.log("usuario conectado");
-  client.on("disconnect", () => {
-    console.log("Usuario desconectado");
-  });
 
-  // Escuchar al cliente
-  client.on("enviarMensaje", data => {
-    console.log(data);
-  });
-});
-// ========================================
+// Antes
+// let io = socketIO(server);
+// Despues 
+module.exports.io = socketIO(server);
 
 // ========================================
 // Configuracion de Sockets
