@@ -26,6 +26,7 @@ app.use(express.static(publicPath));
 // let io = socketIO(server);
 // Despues 
 module.exports.io = socketIO(server);
+require("./sockets/socket");
 
 // ========================================
 // Configuracion de Sockets

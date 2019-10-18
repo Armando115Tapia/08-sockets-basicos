@@ -7,16 +7,20 @@ io.on("connection", client => {
 
   // Escuchar al cliente
   client.on("enviarMensaje", (data, callback) => {
-    //console.log(data);
-    if (data.usuario) {
-      callback({
-        resp: "Todo salio bien"
-      });
-    } else {
-      callback({
-        resp: "Todo salio mal"
-      });
-    }
+    console.log(data);
+    client.broadcast.emit("enviarMensaje", {
+      usuario: data.usuario,
+      mensaje: data.mensaje
+    });
+    // if (data.usuario) {
+    //   callback({
+    //     resp: "Todo salio bien"
+    //   });
+    // } else {
+    //   callback({
+    //     resp: "Todo salio mal"
+    //   });
+    // }
   });
 
   // Eviar msm al cliente
